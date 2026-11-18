@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="素敵な出会いを見つけよう。安心して始められる日本のマッチングサイト。">
+<title>恋結び - 素敵な出会いを見つけよう</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP",Arial,sans-serif;background:#fffafb;color:#29232a}
+header{height:72px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 7%;box-shadow:0 2px 15px #0000000a;position:sticky;top:0;z-index:10}
+.logo{font-size:25px;font-weight:800;color:#e84b79}
+nav{display:flex;gap:25px;align-items:center}
+nav a{text-decoration:none;color:#555;font-size:14px}
+.btn{background:#ed4779;color:white;border:0;padding:12px 24px;border-radius:30px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#d82f65}
+.hero{padding:75px 8%;background:linear-gradient(120deg,#fff0f4,#ffe3ed);display:flex;align-items:center;justify-content:space-between;gap:40px;min-height:430px}
+.hero-content{max-width:550px}
+.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.5;margin-bottom:18px;color:#34242b}
+.hero h1 span{color:#e84979}
+.hero p{color:#715b64;line-height:2;margin-bottom:25px}
+.hero img{width:43%;max-height:340px;object-fit:cover;border-radius:25px}
+.section{padding:65px 8%;text-align:center}
+.section h2{font-size:29px;margin-bottom:12px}
+.subtitle{color:#999;margin-bottom:35px;font-size:14px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{padding:30px 20px;background:white;border-radius:18px;box-shadow:0 5px 25px #00000008}
+.feature .emoji{font-size:38px;margin-bottom:15px}
+.feature h3{margin-bottom:10px}
+.feature p{font-size:14px;color:#888;line-height:1.8}
+.members{background:#fff3f6}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.member{background:white;border-radius:16px;overflow:hidden;text-align:left;box-shadow:0 5px 20px #0000000a}
+.member img{width:100%;height:230px;object-fit:cover}
+.member-info{padding:16px}
+.member-info h3{font-size:17px;margin-bottom:7px}
+.member-info p{font-size:13px;color:#888;margin:5px 0}
+.like{width:100%;margin-top:12px;padding:10px;border:1px solid #ed4779;color:#ed4779;background:white;border-radius:25px;cursor:pointer}
+.like.active{background:#ed4779;color:white}
+.join{background:linear-gradient(120deg,#ee477b,#f58ca9);color:white;padding:65px 20px;text-align:center}
+.join h2{font-size:30px;margin-bottom:15px}
+.join p{margin-bottom:25px}
+.join .btn{background:white;color:#e84979}
+footer{background:#29232a;color:#ddd;padding:35px 8%;text-align:center}
+footer p{font-size:13px;margin:10px}
+footer a{color:#ddd;text-decoration:none;margin:0 8px;font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:white;border-radius:20px;padding:30px;width:100%;max-width:420px;position:relative}
+.modal-box h2{text-align:center;color:#e84979;margin-bottom:20px}
+.modal-box input,.modal-box select{width:100%;padding:13px;margin-bottom:13px;border:1px solid #ddd;border-radius:9px;font-size:14px}
+.modal-box .btn{width:100%}
+.close{position:absolute;right:20px;top:15px;border:0;background:none;font-size:25px;cursor:pointer}
+.notice{font-size:12px;color:#888;line-height:1.7;margin-top:12px}
+@media(max-width:750px){
+header{padding:0 5%;height:65px}
+nav a{display:none}
+.hero{flex-direction:column;text-align:center;padding:55px 6%}
+.hero img{width:100%;max-height:250px}
+.features{grid-template-columns:1fr}
+.cards{grid-template-columns:repeat(2,1fr);gap:12px}
+.member img{height:170px}
+.section{padding:50px 5%}
+}
+@media(max-width:380px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">♡ 恋結び</div>
+ <nav>
+  <a href="#features">特徴</a>
+  <a href="#members">会員紹介</a>
+  <a href="#about">恋結びについて</a>
+  <button class="btn" onclick="openModal()">無料ではじめる</button>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+  <h1>あなたにぴったりの<br><span>素敵な出会い</span>を。</h1>
+  <p>新しい恋、新しいつながり。<br>恋結びで、あなたらしい幸せな出会いを見つけませんか？</p>
+  <button class="btn" onclick="openModal()">無料会員登録はこちら ♡</button>
+ </div>
+ <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=900" alt="カップルのイメージ">
+</section>
+
+<section class="section" id="features">
+ <h2>恋結びが選ばれる理由</h2>
+ <p class="subtitle">安心して出会いを楽しめるサービス</p>
+ <div class="features">
+  <div class="feature">
+   <div class="emoji">💕</div>
+   <h3>素敵な出会い</h3>
+   <p>共通の趣味や価値観から、あなたに合ったお相手を探せます。</p>
+  </div>
+  <div class="feature">
+   <div class="emoji">🔒</div>
+   <h3>安心・安全</h3>
+   <p>安心して利用できる環境づくりを大切にしています。</p>
+  </div>
+  <div class="feature">
+   <div class="emoji">💬</div>
+   <h3>簡単コミュニケーション</h3>
+   <p>気になるお相手との交流を楽しみましょう。</p>
+  </div>
+ </div>
+</section>
+
+<section class="section members" id="members">
+ <h2>おすすめメンバー</h2>
+ <p class="subtitle">新しい出会いを見つけてみましょう</p>
+ <div class="cards">
+
+  <div class="member">
+   <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="プロフィール写真">
+   <div class="member-info">
+    <h3>さくら ♡</h3>
+    <p>24歳・東京都</p>
+    <p>旅行・カフェ・映画</p>
+    <button class="like" onclick="like(this)">♡ いいね</button>
+   </div>
+  </div>
+
+  <div class="member">
+   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="プロフィール写真">
+   <div class="member-info">
+    <h3>美咲 ♡</h3>
+    <p>26歳・大阪府</p>
+    <p>料理・音楽・旅行</p>
+    <button class="like" onclick="like(this)">♡ いいね</button>
+   </div>
+  </div>
+
+  <div class="member">
+   <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500" alt="プロフィール写真">
+   <div class="member-info">
+    <h3>あかり ♡</h3>
+    <p>23歳・神奈川県</p>
+    <p>カフェ・読書・散歩</p>
+    <button class="like" onclick="like(this)">♡ いいね</button>
+   </div>
+  </div>
+
+  <div class="member">
+   <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500" alt="プロフィール写真">
+   <div class="member-info">
+    <h3>ゆい ♡</h3>
+    <p>25歳・京都府</p>
+    <p>ファッション・映画</p>
+    <button class="like" onclick="like(this)">♡ いいね</button>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section class="section" id="about">
+ <h2>恋結びで、新しい一歩を。</h2>
+ <p class="subtitle">あなたの毎日に、ちょっとした幸せを。</p>
+ <p style="color:#777;line-height:2">
+  大切なのは、自然体でいられる相手と出会うこと。<br>
+  恋結びで、あなたにぴったりの出会いを探してみませんか？
+ </p>
+</section>
+
+<section class="join">
+ <h2>あなたの新しい恋を始めよう ♡</h2>
+ <p>まずは無料で会員登録。</p>
+ <button class="btn" onclick="openModal()">今すぐ無料ではじめる</button>
+</section>
+
+<footer>
+ <div class="logo" style="color:#ff8cac">♡ 恋結び</div>
+ <p>素敵な出会いをあなたに。</p>
+ <p>
+  <a href="#about">サービスについて</a>
+  <a href="#features">特徴</a>
+  <a href="#" onclick="alert('プライバシーポリシーは運営者が設定してください。');return false">プライバシーポリシー</a>
+  <a href="#" onclick="alert('利用規約は運営者が設定してください。');return false">利用規約</a>
+ </p>
+ <p>© 2026 恋結び All Rights Reserved.</p>
+</footer>
+
+<div class="modal" id="registerModal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-box">
+  <button class="close" onclick="closeModal()">×</button>
+  <h2>無料会員登録 ♡</h2>
+  <form onsubmit="register(event)">
+   <input id="name" type="text" placeholder="ニックネーム" required>
+   <input id="email" type="email" placeholder="メールアドレス" required>
+   <input id="password" type="password" placeholder="パスワード（8文字以上）" minlength="8" required>
+   <select id="gender" required>
+    <option value="">性別を選択してください</option>
+    <option>男性</option>
+    <option>女性</option>
+    <option>その他</option>
+   </select>
+   <label style="font-size:13px;display:block;margin:5px 0 15px">
+    <input type="checkbox" required style="width:auto;margin:0 5px">
+    利用規約とプライバシーポリシーに同意する
+   </label>
+   <button class="btn" type="submit">登録する ♡</button>
+   <p class="notice">18歳以上の方のみご利用いただけます。このデモでは登録情報は送信・保存されません。</p>
+  </form>
+ </div>
+</div>
+
+<script>
+function openModal(){
+ document.getElementById('registerModal').style.display='flex';
+}
+function closeModal(){
+ document.getElementById('registerModal').style.display='none';
+}
+function like(button){
+ button.classList.toggle('active');
+ button.textContent=button.classList.contains('active')?'♥ いいね済み':'♡ いいね';
+}
+function register(event){
+ event.preventDefault();
+ alert('これはデモサイトです。実際の会員登録機能はまだ接続されていません。');
+}
+</script>
+
+</body>
+</html>
